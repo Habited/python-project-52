@@ -5,5 +5,5 @@ def index(request):
     return render(
         request,
         "index.html",
-        {"text": "World"},
+        {"text": "Kirill-Nikolaev"},
     )

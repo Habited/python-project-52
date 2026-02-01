@@ -1,16 +1,14 @@
 {% extends 'index.html' %}
 {% load django_bootstrap5 %}
 
-{% block title %}{{ title }}{% endblock %}
-
 {% block login %}
 <div class="container-lg">
-<h1>Вход</h1>
+    <h1>Вход</h1>
 
-<form method="post">
-  {% csrf_token %}
-  {% bootstrap_form form %}
-  <button type="submit" class="btn btn-primary">Войти</button>
-</form>
+    <form method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <button type="submit" class="btn btn-primary">Войти</button>
+    </form>
 </div>
 {% endblock %}

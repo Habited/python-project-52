@@ -1,16 +1,14 @@
 {% extends 'index.html' %}
 {% load django_bootstrap5 %}
 
-{% block title %}{{ title }}{% endblock %}
-
 {% block register %}
 <div class="container-lg">
-<h1>Регистрация</h1>
+    <h1>Регистрация</h1>
 
-<form method="post">
-  {% csrf_token %}
-  {% bootstrap_form form %}
-  <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
-</form>
+    <form method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+    </form>
 </div>
 {% endblock %}

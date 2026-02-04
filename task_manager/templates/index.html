@@ -22,7 +22,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Пользователи</a>
+                            <a class="nav-link" href="{% url 'users' %}">Пользователи</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'login' %}">Вход</a>
@@ -37,6 +37,7 @@
     <main class="container flex-grow-1">
     {% block register %}
     {% block login%}
+    {% block user %}
             <h1 class="my-4"></h1>
             <div class="card">
                 <div class="card-body p-5 bg-light">
@@ -46,6 +47,7 @@
                 <a class="btn btn-primary btn-lg" href="https://ru.hexlet.io/">Узнать больше</a>
                 </div>
             </div>
+    {% endblock %}
     {% endblock %}  
     {% endblock %}       
     </main>

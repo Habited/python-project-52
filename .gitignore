@@ -2,3 +2,4 @@
 .github
 .python-version
 .env
+task_manager/__pycache__

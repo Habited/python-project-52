@@ -1,14 +1,15 @@
 {% extends 'index.html' %}
 {% load django_bootstrap5 %}
 
-{% block login_user %}
+{% block update_user %}
 <div class="container-lg">
-    <h1>Вход</h1>
+    <h1>Обнавить запись</h1>
+    <a>{{ users }}</a>
 
     <form method="post">
         {% csrf_token %}
         {% bootstrap_form form %}
-        <button type="submit" class="btn btn-primary">Войти</button>
+        <button type="submit" class="btn btn-primary">Подтвердить</button>
     </form>
 </div>
 {% endblock %}

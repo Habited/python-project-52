@@ -22,22 +22,24 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'users' %}">Пользователи</a>
+                            <a class="nav-link" href="{% url 'list_users' %}">Пользователи</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'login' %}">Вход</a>
+                            <a class="nav-link" href="{% url 'login_user' %}">Вход</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'register' %}">Регистрация</a>
+                            <a class="nav-link" href="{% url 'register_user' %}">Регистрация</a>
                         </li>
                     </ul>
                 </div>
         </nav>
     </header>
     <main class="container flex-grow-1">
-    {% block register %}
-    {% block login%}
-    {% block user %}
+    {% block delete_user %}
+    {% block update_user %}
+    {% block register_user %}
+    {% block login_user%}
+    {% block list_user %}
             <h1 class="my-4"></h1>
             <div class="card">
                 <div class="card-body p-5 bg-light">
@@ -49,6 +51,8 @@
             </div>
     {% endblock %}
     {% endblock %}  
+    {% endblock %}
+    {% endblock %}
     {% endblock %}       
     </main>
     <footer class="bg-light">

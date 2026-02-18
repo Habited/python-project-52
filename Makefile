@@ -6,3 +6,6 @@ build:
 
 render-start:
 	uv run gunicorn task_manager.wsgi
+
+run-shell:
+	uv run manage.py shell

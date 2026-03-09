@@ -1,9 +1,9 @@
 from django import forms
-from django.contrib.auth.hashers import make_password
-from task_manager.models import Users
+from task_manager.models import Users, Statuses
 
 
 class RegisterUserForm(forms.ModelForm):
+
     password_validation = forms.CharField(
         widget=forms.PasswordInput(attrs={
             "class": "form-input",
@@ -15,6 +15,7 @@ class RegisterUserForm(forms.ModelForm):
     )
 
     class Meta:
+
         model = Users
         fields = ["first_name", "last_name", "user_name", "password",]
         widgets = {
@@ -54,6 +55,7 @@ class RegisterUserForm(forms.ModelForm):
 class LoginUserForm(forms.ModelForm):
     
     class Meta:
+
         model = Users
         fields = ["user_name", "password"]
         widgets = {
@@ -72,3 +74,22 @@ class LoginUserForm(forms.ModelForm):
             "user_name": "Имя пользователя",
             "password": "Пароль"
         }
+
+
+class CreateStatusForm(forms.ModelForm):
+    
+    class Meta:
+
+        model = Statuses
+        fields = ["status_name"]
+        widgets = {
+            "status": forms.TextInput(attrs={
+                "class": "form-input",
+                "placeholder": "Имя",
+                "autocomplite": "statusname"
+            }),
+        }
+        labels = {
+            "status_name": "Имя",
+        }
+

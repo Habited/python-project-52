@@ -3,12 +3,12 @@
 
 {% block register_user %}
 <div class="container-lg">
-    <h1>Регистрация</h1>
+    <h1>{{ title }}</h1>
 
     <form method="post">
         {% csrf_token %}
         {% bootstrap_form form %}
-        <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+        <button type="submit" class="btn btn-primary">{{ button_name }}</button>
     </form>
 </div>
 {% endblock %}

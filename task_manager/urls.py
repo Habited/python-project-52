@@ -16,20 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.contrib.auth.views import LogoutView
-from django.urls import path
+from django.urls import path, include
 from task_manager import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='home'),
-    path('users/', views.UsersList.as_view(), name='list_users'),
-    path('users/create/', views.CreateUser.as_view(), name='register_user'),
-    path('users/<int:pk>/update', views.UpdateUser.as_view(), name='update_user'),
-    path('users/<int:pk>/delete', views.DeleteUser.as_view(), name='delete_user'),
-    path('login/', views.LoginUser.as_view(), name='login_user'),
-    path('logout/', LogoutView.as_view(http_method_names=['get', 'post']), name='logout_user'),
-    path('statuses/', views.StatusesList.as_view(), name='list_statuses'),
-    path('statuses/<int:pk>/update', views.UpdateStatus.as_view(), name='update_status'),
-    path('statuses/<int:pk>/delete', views.DeleteStatus.as_view(), name='delete_status'),
-    path('statuses/create/', views.CreateStatus.as_view(), name='register_status'),
+    path('statuses/', include('task_manager.status.urls', namespace="statuses")),
+    path('users/', include('task_manager.users.urls', namespace="users")),
 ]

@@ -4,7 +4,7 @@ from django.test import TestCase
 
 import datetime
 from django.utils import timezone
-from task_manager.forms import RegisterUserForm, LoginUserForm
+from task_manager.users.forms import RegisterUserForm, LoginUserForm
 
 class RegisterUserFormTest(TestCase):
 

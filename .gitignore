@@ -3,3 +3,7 @@
 .python-version
 .env
 task_manager/__pycache__
+task_manager/users/__pycache__
+task_manager/statuses/__pycache__
+task_manager/migrations/__pycache__
+db.sqlite3

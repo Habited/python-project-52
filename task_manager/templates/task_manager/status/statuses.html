@@ -1,9 +1,10 @@
 {% extends 'index.html' %}
 {% load django_bootstrap5 %}
 
-{% block status %}
+{% block content %}
 <div class="container-lg">
     <h1>{{ title }}</h1>
+    <a class="btn btn-primary" href="{% url 'statuses:create_status' %}">Создать статус</a>
     <table class="table table-striped table-borderless">
         <thead>
             <tr>
@@ -21,9 +22,9 @@
                 <td>{{ status.status_name }}</td>
                 <td>{{ status.time_create }}</td>
                 <td>
-                    <a href="{% url 'update_status' status.pk %}">Изменить</a>
+                    <a href="{% url 'statuses:update_status' status.pk %}">Изменить</a>
                     <hr>
-                    <a href="{% url 'delete_status' status.pk %}">Удалить</h5>
+                    <a href="{% url 'statuses:delete_status' status.pk %}">Удалить</h5>
                 </td>
             </tr>
         {% endfor %}

@@ -1,0 +1,65 @@
+{# templates/task_manager/tasks/detail.html #}
+{% extends 'index.html' %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+{% bootstrap_messages %}
+
+<div class="container-lg">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>{{ title }}</h1>
+    </div>
+    
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">{{ task.task_name }}</h4>
+        </div>
+        <div class="card-body">
+            <table class="table table-borderless mb-0">
+                <tbody>
+                    <tr>
+                        <th scope="row" class="w-25">Описание:</th>
+                        <td>{{ task.description|default:"—" }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Автор:</th>
+                        <td>{{ task.author.username }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Исполнитель:</th>
+                        <td>
+                            {% if task.executor %}
+                                {{ task.executor.username }}
+                            {% else %}
+                                <span class="text-muted">—</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Статус:</th>
+                        <td>
+                            {% if task.status %}
+                                {{ task.status.status_name }}
+                            {% else %}
+                                <span class="text-muted">—</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Дата создания:</th>
+                        <td>{{ task.time_create|date:"d.m.Y H:i" }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div>
+                <a href="{% url 'tasks:update_task' task.pk %}" class="btn btn-warning">
+                    Изменить
+                </a>
+                <a href="{% url 'tasks:delete_task' task.pk %}" class="btn btn-danger">
+                    Удалить
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

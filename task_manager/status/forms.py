@@ -1,6 +1,5 @@
 from django import forms
 from .models import Statuses
-from django.contrib.auth.forms import AuthenticationForm
 
 
 

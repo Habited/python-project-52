@@ -2,6 +2,7 @@
 {% load django_bootstrap5 %}
 
 {% block content %}
+{% bootstrap_messages %}
 <div class="container-lg">
     <h1>{{ title }}</h1>
     <a class="btn btn-primary" href="{% url 'statuses:create_status' %}">Создать статус</a>
@@ -24,11 +25,11 @@
                 <td>
                     <a href="{% url 'statuses:update_status' status.pk %}">Изменить</a>
                     <hr>
-                    <a href="{% url 'statuses:delete_status' status.pk %}">Удалить</h5>
+                    <a href="{% url 'statuses:delete_status' status.pk %}">Удалить</a>
                 </td>
             </tr>
-        {% endfor %}
-        {% endif %}
+        {% empty %}
+        {% end %}
         </tbody>
         
     </table>

@@ -5,12 +5,10 @@ source $HOME/.local/bin/env
 set -o errexit
 
 # Modify this line as needed for your package manager (pip, poetry, etc.)
-uv sync
+uv sync --frozen
 
 # Convert static asset files
-python manage.py collectstatic --no-input
+python manage.py collectstatic --noinput
 
 # Apply any outstanding database migrations
 python manage.py migrate
-# команду установки зависимостей, сборки статики, применения миграций и другие
-make install && make collectstatic && make migrate

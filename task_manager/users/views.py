@@ -81,7 +81,7 @@ class LogoutUser(LogoutView):
         return super().dispatch(request, *args, **kwargs)
 
 
-class UsersList(ListView):
+class UsersList(ListView, LoginRequiredMixin):
     model = User
     context_object_name = 'users'
     template_name = "task_manager/users/users.html"

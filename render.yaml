@@ -21,6 +21,6 @@ services:
       - key: WEB_CONCURRENCY
         value: 4
       - key: DEBUG
-        value: false
+        value: true
       - key: RENDER
         value: true

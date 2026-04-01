@@ -9,7 +9,7 @@ from django.contrib.auth import get_user_model
 
 
 
-class TasksList(LoginRequiredMixin, ListView, ):
+class TasksList(ListView, LoginRequiredMixin):
     
     model = Tasks
     template_name = "task_manager/tasks/tasks.html"
@@ -35,6 +35,10 @@ class TasksList(LoginRequiredMixin, ListView, ):
             if executor:
                 queryset = queryset.filter(executor=executor)
 
+            label = form.cleaned_data.get('labels')
+            if label:
+                queryset = queryset.filter(labels=label)
+
         return queryset
 
 class UpdateTask(LoginRequiredMixin, UpdateView):
@@ -56,16 +60,12 @@ class DeleteTask(LoginRequiredMixin, DeleteView):
     model = Tasks
     template_name = "task_manager/tasks/delete.html"
     success_url = reverse_lazy("tasks:list_tasks")
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["title"] = "Удаление Задачи"
-        return context
+    extra_context = {"title": "Удаление Задачи"}
     
     def post(self, request, *args, **kwargs):
-        task = self.get_object()
+        tasks = self.get_object()
 
-        if task.author != self.request.user:
+        if tasks.author != self.request.user:
             messages.error(request, "Задачу может удалить только её автор")
             return redirect('tasks:list_tasks')
 

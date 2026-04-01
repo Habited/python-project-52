@@ -32,7 +32,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-dev-key-change-in-producti
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'True').lower() == 'true'
 
-ALLOWED_HOSTS = ['python-project-52-2ckb.onrender.com', '127.0.0.1', 'webserver', 'localhost']
+ALLOWED_HOSTS = ['python-project-52-2ckb.onrender.com', '127.0.0.1', '.onrender.com', 'localhost']
 
 
 # Application definition
@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'task_manager.status.apps.StatusConfig',
     'task_manager.users.apps.UsersConfig',
     'task_manager.tasks.apps.TasksConfig',
+    'task_manager.labels.apps.LabelsConfig',
     'django_bootstrap5',
 ]
 
@@ -91,7 +92,6 @@ DATABASES = {
         default='sqlite:///' + str(BASE_DIR / 'db.sqlite3'),
         conn_max_age=600,
         conn_health_checks=True,
-
     )
 }
 

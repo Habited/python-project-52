@@ -17,7 +17,6 @@ class StatusesList(LoginRequiredMixin, ListView):
 
 class UpdateStatus(LoginRequiredMixin, UpdateView):
     model = Statuses
-    fields = "__all__"
     template_name = "task_manager/status/update.html"
     extra_context = {"title": "Обнавление"}
     success_url = reverse_lazy("statuses:list_statuses")
@@ -35,11 +34,6 @@ class DeleteStatus(LoginRequiredMixin, DeleteView):
     template_name = "task_manager/status/delete.html"
     extra_context = {"title": "Удаление"}
     success_url = reverse_lazy("statuses:list_statuses")
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["title"] = "Удаление статуса"
-        return context
     
     def post(self, request, *args, **kwargs):
         status = self.get_object()
@@ -61,7 +55,7 @@ class CreateStatus(LoginRequiredMixin, CreateView):
     form_class = CreateStatusForm
     template_name = "task_manager/status/create_status.html"
     success_url = reverse_lazy("statuses:list_statuses")
-    extra_context = {"title": "Создать статус", "button_name": "Создать"}
+    extra_context = {"title": "Создать статус"}
 
     def form_valid(self, form):
         messages.success(self.request, "Статус успешно создан")

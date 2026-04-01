@@ -4,10 +4,11 @@
 {% block content %}
 <div class="container-lg">
     <h1>{{ title }}</h1>
+
     <form method="post">
         {% csrf_token %}
-        {% bootstrap_form form %}
-    <button type="submit" class="btn btn-primary">Создать</button>
+        <button type="submit" class="btn btn-danger">Да, удалить</button>
+        <a href="{% url 'labels:list_labels' %}" class="btn btn-secondary">Отмена</a>
     </form>
 </div>
 {% endblock %}

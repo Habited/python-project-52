@@ -1,6 +1,7 @@
 from django import forms
 from .models import Tasks
 from task_manager.status.models import Statuses
+from task_manager.labels.models import Label
 from django.contrib.auth import get_user_model
 
 
@@ -29,6 +30,18 @@ class ListTasksForm(forms.Form):
                 }),
             empty_label="Все исполнители"
         )
+    
+    labels = forms.ModelChoiceField(
+            queryset=Label.objects.all(),
+            required=False,
+            label='Метка',
+            widget=forms.Select(
+                attrs={
+                    'class': 'form-select',
+                    'id': 'labels-select',
+                }),
+            empty_label="Все Метки"
+        )
 
 
 
@@ -37,7 +50,7 @@ class CreateTaskForm(forms.ModelForm):
     class Meta:
 
         model = Tasks
-        fields = ["task_name", "description", "status", "executor"]
+        fields = ["task_name", "description", "status", "executor", "labels"]
         widgets = {
             'task_name': forms.TextInput(attrs={
                 'class': 'form-control',
@@ -56,6 +69,10 @@ class CreateTaskForm(forms.ModelForm):
                 'class': 'form-select',
                 'id': 'executor-select',
             }),
+            'labels': forms.SelectMultiple(attrs={
+                'class': 'form-select',
+                'id': 'labels-select',
+            }),
         }
 
     def __init__(self, *args, **kwargs):
@@ -64,3 +81,4 @@ class CreateTaskForm(forms.ModelForm):
         self.fields['status'].queryset = Statuses.objects.all()
         self.fields['executor'].empty_label = "--------"
         self.fields['executor'].queryset = get_user_model().objects.all()
+        self.fields['labels'].queryset = Label.objects.all()

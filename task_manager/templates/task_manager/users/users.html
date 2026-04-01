@@ -16,7 +16,6 @@
         </thead>
         
         <tbody>
-        {% if users %}
         {% for user in users %}
             <tr>
                 <td>{{ user.id }}</td>
@@ -26,13 +25,17 @@
                 {% if user.pk == request.user.pk or request.user.is_staff %}
                 <td>
                     <a href="{% url 'users:update_user' user.pk %}">Изменить</a>
-                    <hr>
+                    <br>
                     <a href="{% url 'users:delete_user' user.pk %}">Удалить</a>
+                </td>
+                {% else %}
+                <td>
+                    <span class="text-muted">—</span>
                 </td>
                 {% endif %}
             </tr>
-        {% endfor %}
-        {% endif %}
+        {% empty %}
+        {% endfor%}
         </tbody>
         
     </table>

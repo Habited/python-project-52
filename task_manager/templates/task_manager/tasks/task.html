@@ -14,6 +14,9 @@
         <div class="card-header bg-primary text-white">
             <h4 class="mb-0">{{ task.task_name }}</h4>
         </div>
+        <div class="card-header bg-success  text-white">
+            <h5 class="mb-0">{{ task.description|default:"—" }}</h5>
+        </div>
         <div class="card-body">
             <table class="table table-borderless mb-0">
                 <tbody>
@@ -49,15 +52,25 @@
                         <th scope="row">Дата создания:</th>
                         <td>{{ task.time_create|date:"d.m.Y H:i" }}</td>
                     </tr>
+                    <tr>
+                        <th scope="row">Метки:</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            {% if task.labels.exists %}
+                                {% for label in task.labels.all %}
+                                <ul>
+                                    <li>{{ label.label_name }}</li>
+                                </ul>
+                                {% endfor %}
+                            {% endif %}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div>
-                <a href="{% url 'tasks:update_task' task.pk %}" class="btn btn-warning">
-                    Изменить
-                </a>
-                <a href="{% url 'tasks:delete_task' task.pk %}" class="btn btn-danger">
-                    Удалить
-                </a>
+                <a href="{% url 'tasks:update_task' task.pk %}" class="btn btn-primary">Изменить</a>
+                <a href="{% url 'tasks:delete_task' task.pk %}" class="btn btn-danger">Удалить</a>
             </div>
         </div>
     </div>

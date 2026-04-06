@@ -42,7 +42,16 @@ class ListTasksForm(forms.Form):
                 }),
             empty_label="Все Метки"
         )
-
+    
+    author = forms.BooleanField(
+            required=False,
+            label='Только свои задачи',
+            widget=forms.CheckboxInput(
+                attrs={
+                    'class': 'form-check-input',
+                    'id': 'only-my-tasks-checkbox',
+                }),
+        )
 
 
 class CreateTaskForm(forms.ModelForm):

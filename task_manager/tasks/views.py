@@ -39,6 +39,10 @@ class TasksList(ListView, LoginRequiredMixin):
             if label:
                 queryset = queryset.filter(labels=label)
 
+            only_my = form.cleaned_data.get('author')
+            if only_my:
+                queryset = queryset.filter(author=self.request.user)
+
         return queryset
 
 class UpdateTask(LoginRequiredMixin, UpdateView):

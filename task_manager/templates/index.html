@@ -2,6 +2,7 @@
 <html lang="ru">
 <head>
     {% load static %}
+    {% load django_bootstrap5 %}
     <title>Менеджер задач Hexlet</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -51,8 +52,8 @@
             </div>
         </nav>
     </header>
-
     <main class="container flex-grow-1 my-4">
+        {% bootstrap_messages %}
         {% block content %}
          <div class="card">
                 <div class="card-body p-5 bg-light">

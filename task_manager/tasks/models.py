@@ -12,7 +12,7 @@ class Tasks(models.Model):
         verbose_name="Имя")
     description = models.TextField(
         max_length=5000,
-        verbose_name="Оипсание",
+        verbose_name="Описание",
         default="Описание отсутствует")
     status = models.ForeignKey(
         Statuses,

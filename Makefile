@@ -11,5 +11,4 @@ run-shell:
 	uv run manage.py shell
 
 run-migration:
-	uv run manage.py makemigrations
 	uv run manage.py migrate

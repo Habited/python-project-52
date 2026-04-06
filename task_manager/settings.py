@@ -137,3 +137,5 @@ if not DEBUG:
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 LOGOUT_REDIRECT_URL = 'login_user'
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

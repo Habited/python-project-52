@@ -40,7 +40,7 @@ class RegisterUserForm(UserCreationForm):
         labels = {
             "first_name": "Имя",
             "last_name": "Фамилия",
-            "username": "Логин",
+            "username": "Имя пользователя",
         }
         
         help_texts = {

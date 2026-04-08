@@ -43,6 +43,7 @@ class Tasks(models.Model):
     class Meta:
         verbose_name = "Задача"
         verbose_name_plural = "Задачи"
+        ordering = ['-time_create']
     
     def __str__(self):
         return self.task_name

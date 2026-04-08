@@ -5,7 +5,7 @@
 
 # Проект Task-Manager
 
-### Проект Task-Manager разработан для ________.
+### Проект Task-Manager разработан для распределения задач.
 
 [![Actions Status](https://github.com/Habited/python-project-52/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Habited/python-project-52/actions)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=Habited_python-project-83&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=Habited_python-project-52)
@@ -22,20 +22,19 @@
 
 ## Основные возможности
 
-Позволяет добавлять url адрес в список адресов, а так же проверять url адреса на (status code, h1, created_at, title, discription)
-Проект page_analyzer разработан для анализа urls адресов.
+Позволяет создаватьб обнавлять, просматривать и удалять задачи. Так же можно устанавливать статусы и метки, фильтровать задачи.
 
 ## Технологии
 
 - **Язык**: Python 3.12, HTML
 - **Фреймворки**: Django
-- **Инструменты**: PostgreSQL, ruff, python-dotenv, uv
+- **Инструменты**: PostgreSQL, ruff, python-dotenv, uv, psycopg2-binary, bootstrap5
 
 ## Установка
 
 - git clone https://github.com/Habited/python-project-52.git
 - uv sync
-- make start
+- make run-server
 
 ## Конфигурация
 - DEBUG=False

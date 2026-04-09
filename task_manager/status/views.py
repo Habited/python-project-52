@@ -17,6 +17,7 @@ class StatusesList(LoginRequiredMixin, ListView):
 
 class UpdateStatus(LoginRequiredMixin, UpdateView):
     model = Statuses
+    fields = ['status_name']
     template_name = "task_manager/status/update.html"
     extra_context = {"title": "Обнавление"}
     success_url = reverse_lazy("statuses:list_statuses")
@@ -24,7 +25,7 @@ class UpdateStatus(LoginRequiredMixin, UpdateView):
     def form_valid(self, form):
         messages.success(
             self.request, 
-            f"Статус {form.instance.status_name} успешно изменен"
+            f"Статус успешно изменен"
         )
         return super().form_valid(form)
 

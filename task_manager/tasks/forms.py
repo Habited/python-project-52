@@ -16,7 +16,7 @@ class ListTasksForm(forms.Form):
                     'class': 'form-select',
                     'id': 'status-select',
                 }),
-            empty_label="Все статусы"
+            empty_label="---------"
         )
 
     executor = forms.ModelChoiceField(
@@ -28,7 +28,7 @@ class ListTasksForm(forms.Form):
                     'class': 'form-select',
                     'id': 'executor-select',
                 }),
-            empty_label="Все исполнители"
+            empty_label="---------"
         )
     
     labels = forms.ModelChoiceField(
@@ -38,9 +38,9 @@ class ListTasksForm(forms.Form):
             widget=forms.Select(
                 attrs={
                     'class': 'form-select',
-                    'id': 'labels-select',
+                    'id': 'id-labels',
                 }),
-            empty_label="Все Метки"
+            empty_label="---------"
         )
     
     author = forms.BooleanField(

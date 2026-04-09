@@ -65,7 +65,7 @@ class LoginUserForm(AuthenticationForm):
     username = forms.CharField(
         label="Имя пользователя",
         widget=forms.TextInput(attrs={
-            "class": "form-input",
+            "class": "form-control",
             "placeholder": "Имя пользователя",
             "autocomplete": "username",
             "autofocus": True,
@@ -77,7 +77,7 @@ class LoginUserForm(AuthenticationForm):
         label="Пароль",
         strip=False,
         widget=forms.PasswordInput(attrs={
-            "class": "form-input",
+            "class": "form-control",
             "placeholder": "Пароль",
             "autocomplete": "current-password",
         }),

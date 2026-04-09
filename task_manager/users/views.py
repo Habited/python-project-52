@@ -17,8 +17,9 @@ class RegisterUser(CreateView):
     extra_context = {"title": "Регистрация"}
 
     def form_valid(self, form):
+        response = super().form_valid(form)
         messages.success(self.request, "Пользователь успешно зарегистрирован")
-        return super().form_valid(form)
+        return response
     
     def form_invalid(self, form):
         messages.error(

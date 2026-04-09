@@ -29,7 +29,7 @@ class RegisterUser(CreateView):
         return super().form_invalid(form)
 
     def get_success_url(self):
-        return reverse_lazy("users:login_user")
+        return reverse_lazy("login_user")
 
 
 class UpdateUser(UpdateView):
@@ -75,7 +75,7 @@ class LoginUser(LoginView):
 class LogoutUser(LogoutView):
     
     http_method_names = ['post',]
-    next_page = reverse_lazy('users:login_user')
+    next_page = reverse_lazy('login_user')
     
     def dispatch(self, request, *args, **kwargs):
         messages.success(request, "Вы разлогинены")

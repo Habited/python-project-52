@@ -36,14 +36,14 @@
                         <a class="nav-link" href="{% url 'tasks:list_tasks' %}">Задачи</a>
                     </li>
                     <li class="nav-item">
-                        <form method="post" action="{% url 'users:logout_user' %}">
+                        <form method="post" action="{% url 'logout_user' %}">
                             {% csrf_token %}
                             <button type="submit" class="nav-link">Выход</button>
                         </form>
                     </li>
                     {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'users:login_user' %}">Вход</a>
+                        <a class="nav-link" href="{% url 'login_user' %}">Вход</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'users:register_user' %}">Регистрация</a>

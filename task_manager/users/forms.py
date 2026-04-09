@@ -41,6 +41,8 @@ class RegisterUserForm(UserCreationForm):
             "first_name": "Имя",
             "last_name": "Фамилия",
             "username": "Имя пользователя",
+            "password1": "Пароль",
+            "password2": "Подтверждение пароля",
         }
         
         help_texts = {

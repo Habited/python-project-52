@@ -54,6 +54,21 @@ class ListTasksForm(forms.Form):
 
 
 class CreateTaskForm(forms.ModelForm):
+    status = forms.ModelChoiceField(
+        queryset=Statuses.objects.all(),
+        empty_label="--------",
+        widget=forms.Select(attrs={'class': 'form-select', 'id': 'status-select'})
+    )
+    executor = forms.ModelChoiceField(
+        queryset=get_user_model().objects.all(),
+        empty_label="--------",
+        widget=forms.Select(attrs={'class': 'form-select', 'id': 'executor-select'})
+    )
+    labels = forms.ModelMultipleChoiceField(
+        queryset=Label.objects.all(),
+        required=False,
+        widget=forms.SelectMultiple(attrs={'class': 'form-control', 'id': 'id_labels', 'size': '5'})
+    )
     
     class Meta:
 
@@ -68,18 +83,6 @@ class CreateTaskForm(forms.ModelForm):
                 'class': 'form-control',
                 'rows': 5,
                 'maxlength': 5000
-            }),
-            'status': forms.Select(attrs={
-                'class': 'form-select',
-                'id': 'status-select',
-            }),
-            'executor': forms.Select(attrs={
-                'class': 'form-select',
-                'id': 'executor-select',
-            }),
-            'labels': forms.SelectMultiple(attrs={
-                'class': 'form-select',
-                'id': 'id_labels',
             }),
         }
         labels = {

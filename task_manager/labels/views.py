@@ -16,7 +16,7 @@ class LabelsList(LoginRequiredMixin, ListView):
 
 class UpdateLabel(LoginRequiredMixin, UpdateView):
     model = Label
-    fields = "__all__"
+    fields = ['label_name']
     template_name = "task_manager/labels/update.html"
     extra_context = {"title": "Обнавление"}
     success_url = reverse_lazy("labels:list_labels")
@@ -47,7 +47,7 @@ class DeleteLabel(LoginRequiredMixin, DeleteView):
             
         messages.success(
                 request, 
-                "Метка успешно удалtна")
+                "Метка успешно удалена")
         return super().post(request, *args, **kwargs)
 
 

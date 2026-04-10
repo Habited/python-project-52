@@ -48,7 +48,7 @@ class DeleteStatus(LoginRequiredMixin, DeleteView):
             
         messages.success(
                 request, 
-                "Статус успешно удалён!")
+                "Статус успешно удален")
         return super().post(request, *args, **kwargs)
 
 

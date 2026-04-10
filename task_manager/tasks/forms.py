@@ -31,16 +31,15 @@ class ListTasksForm(forms.Form):
             empty_label="---------"
         )
     
-    labels = forms.ModelChoiceField(
+    labels = forms.ModelMultipleChoiceField(
             queryset=Label.objects.all(),
             required=False,
             label='Метка',
-            widget=forms.Select(
+            widget=forms.SelectMultiple(
                 attrs={
                     'class': 'form-select',
-                    'id': 'id-labels',
-                }),
-            empty_label="---------"
+                    'id': 'id_labels',
+                })
         )
     
     author = forms.BooleanField(
@@ -80,8 +79,15 @@ class CreateTaskForm(forms.ModelForm):
             }),
             'labels': forms.SelectMultiple(attrs={
                 'class': 'form-select',
-                'id': 'labels-select',
+                'id': 'id_labels',
             }),
+        }
+        labels = {
+            'task_name': 'Название',
+            'description': 'Описание',
+            'status': 'Статус',
+            'executor': 'Исполнитель',
+            'labels': 'Метки',
         }
 
     def __init__(self, *args, **kwargs):

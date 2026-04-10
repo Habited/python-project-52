@@ -11,7 +11,7 @@ class CreateStatusForm(forms.ModelForm):
         fields = ["status_name"]
         widgets = {
             "status_name": forms.TextInput(attrs={
-                "class": "form-input",
+                "class": "form-control",
                 "placeholder": "Название статуса",
                 "autocomplete": "off"
             }),

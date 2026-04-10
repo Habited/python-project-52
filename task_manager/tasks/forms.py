@@ -83,7 +83,7 @@ class CreateTaskForm(forms.ModelForm):
             }),
         }
         labels = {
-            'task_name': 'Название',
+            'task_name': 'Имя',
             'description': 'Описание',
             'status': 'Статус',
             'executor': 'Исполнитель',

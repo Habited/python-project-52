@@ -47,7 +47,7 @@ class DeleteLabel(LoginRequiredMixin, DeleteView):
             
         messages.success(
                 request, 
-                "Метка успешно удалёна!")
+                "Метка успешно удалtна")
         return super().post(request, *args, **kwargs)
 
 

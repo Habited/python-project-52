@@ -62,4 +62,7 @@ class CreateStatus(LoginRequiredMixin, CreateView):
         messages.success(self.request, "Статус успешно создан")
         return super().form_valid(form)
     
+    def form_invalid(self, form):
+        return self.render_to_response(self.get_context_data(form=form))
+    
 

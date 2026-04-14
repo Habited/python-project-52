@@ -57,17 +57,20 @@ class CreateTaskForm(forms.ModelForm):
     status = forms.ModelChoiceField(
         queryset=Statuses.objects.all(),
         empty_label="--------",
-        widget=forms.Select(attrs={'class': 'form-select', 'id': 'status-select'})
+        widget=forms.Select(attrs={'class': 'form-select', 'id': 'status-select'}),
+        label="Статус"
     )
     executor = forms.ModelChoiceField(
         queryset=get_user_model().objects.all(),
         empty_label="--------",
-        widget=forms.Select(attrs={'class': 'form-select', 'id': 'executor-select'})
+        widget=forms.Select(attrs={'class': 'form-select', 'id': 'executor-select'}),
+        label="Исполнитель"
     )
     labels = forms.ModelMultipleChoiceField(
         queryset=Label.objects.all(),
         required=False,
-        widget=forms.SelectMultiple(attrs={'class': 'form-control', 'id': 'id_labels', 'size': '5'})
+        widget=forms.SelectMultiple(attrs={'class': 'form-control', 'id': 'id_labels', 'size': '5'}),
+        label="Метка"
     )
     
     class Meta:

@@ -55,7 +55,7 @@ class CreateLabel(LoginRequiredMixin, CreateView):
     form_class = CreateLabelForm
     template_name = "task_manager/labels/create.html"
     success_url = reverse_lazy("labels:list_labels")
-    extra_context = {"title": "Создать метку", "button_name": "Создать"}
+    extra_context = {"title": "Создать метку"}
 
     def form_valid(self, form):
         messages.success(self.request, "Метка успешно создана")

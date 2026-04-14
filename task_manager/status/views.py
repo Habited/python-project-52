@@ -57,12 +57,3 @@ class CreateStatus(LoginRequiredMixin, CreateView):
     template_name = "task_manager/status/create_status.html"
     success_url = reverse_lazy("statuses:list_statuses")
     extra_context = {"title": "Создать статус"}
-
-    def form_valid(self, form):
-        messages.success(self.request, "Статус успешно создан")
-        return super().form_valid(form)
-    
-    def form_invalid(self, form):
-        return self.render_to_response(self.get_context_data(form=form))
-    
-

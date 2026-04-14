@@ -1,6 +1,6 @@
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from .forms import RegisterUserForm, LoginUserForm
+from .forms import RegisterUserForm, LoginUserForm, UpdateUserForm
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from django.contrib import messages
 from django.contrib.auth.views import LoginView, LogoutView
@@ -9,7 +9,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from task_manager.tasks.models import Tasks
 from django.db.models import ProtectedError
-
+from django.views.generic.edit import FormView
 
 class RegisterUser(CreateView):
     form_class = RegisterUserForm
@@ -32,9 +32,8 @@ class RegisterUser(CreateView):
         return reverse_lazy("login_user")
 
 
-class UpdateUser(UpdateView):
-    model = User
-    fields = ["last_name", "first_name", "username"]
+class UpdateUser(FormView):
+    form_class = UpdateUserForm
     template_name = "task_manager/users/update.html"
     extra_context = {"title": "Обнавление"}
     success_url = reverse_lazy("users:list_users")
@@ -42,9 +41,16 @@ class UpdateUser(UpdateView):
     def form_valid(self, form):
         messages.success(
             self.request, 
-            f"Пользователь {form.instance.username} успешно изменен"
+            f"Пользователь успешно изменен"
         )
         return super().form_valid(form)
+    
+    def form_invalid(self, form):
+        messages.error(
+            self.request, 
+            "Проверьте правильность заполнения формы"
+        )
+        return super().form_invalid(form)
 
 
 class LoginUser(LoginView):

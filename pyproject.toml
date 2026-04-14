@@ -13,4 +13,5 @@ dependencies = [
     "psycopg2-binary>=2.9.11",
     "uvicorn>=0.40.0",
     "whitenoise[brotli]>=6.11.0",
+    "rollbar>=1.3.0",
 ]

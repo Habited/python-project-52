@@ -48,7 +48,6 @@ class TasksList(ListView, LoginRequiredMixin):
 class UpdateTask(LoginRequiredMixin, UpdateView):
     model = Tasks
     form_class = CreateTaskForm
-    fields = ["task_name"]
     template_name = "task_manager/tasks/update.html"
     extra_context = {"title": "Редактирование задачи"}
     success_url = reverse_lazy("tasks:list_tasks")

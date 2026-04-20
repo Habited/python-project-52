@@ -17,7 +17,7 @@ class Tasks(models.Model):
         default="Описание отсутствует")
     status = models.ForeignKey(
         Statuses,
-        on_delete=models.SET_NULL,
+        on_delete=models.PROTECT,
         verbose_name="Статус",
         related_name="status_tasks",
         null=True)

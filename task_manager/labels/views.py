@@ -42,7 +42,7 @@ class DeleteLabel(LoginRequiredMixin, DeleteView):
         if labels_count > 0:
             messages.error(
                 request, 
-                "Невозможно удалить метку, потому что она используется")
+                "Невозможно удалить метку")
             return redirect('labels:list_labels')
             
         messages.success(

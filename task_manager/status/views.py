@@ -43,7 +43,7 @@ class DeleteStatus(LoginRequiredMixin, DeleteView):
         if tasks_count > 0:
             messages.error(
                 request, 
-                "Невозможно удалить статус, потому что он используется")
+                "Невозможно удалить статус")
             return redirect('statuses:list_statuses')
             
         messages.success(

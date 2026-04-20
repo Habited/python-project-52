@@ -47,7 +47,7 @@ class UpdateUser(UpdateView):
             messages.error(self.request, "У вас нет прав для изменения")
             return redirect('users:list_users')
         
-        messages.success(self.request, "Пользователь успешно изменён")
+        messages.success(self.request, "Пользователь успешно изменен")
         return super().form_valid(form)
 
     
@@ -108,6 +108,6 @@ class DeleteUser(LoginRequiredMixin, DeleteView):
             messages.error(request,
                 f"У вас нет прав для")
             return redirect('users:list_users')
-        messages.success(request, "Пользователь успешно удалён")
+        messages.success(request, "Пользователь успешно удален")
         return super().post(request, *args, **kwargs)
 

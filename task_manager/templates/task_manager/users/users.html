@@ -21,17 +21,11 @@
                 <td>{{ user.username }}</td>
                 <td>{{ user.first_name }} {{ user.last_name }}</td>
                 <td>{{ user.date_joined|date:"d.m.Y H:i" }}</td>
-                {% if user.pk == request.user.pk or request.user.is_staff %}
                 <td>
                     <a href="{% url 'users:update_user' user.pk %}">Изменить</a>
                     <br>
                     <a href="{% url 'users:delete_user' user.pk %}">Удалить</a>
                 </td>
-                {% else %}
-                <td>
-                    <span class="text-muted">—</span>
-                </td>
-                {% endif %}
             </tr>
         {% empty %}
         {% endfor%}

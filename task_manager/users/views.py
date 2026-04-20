@@ -32,25 +32,26 @@ class RegisterUser(CreateView):
         return reverse_lazy("login_user")
 
 
-class UpdateUser(FormView):
+class UpdateUser(UpdateView):
+    model = User
     form_class = UpdateUserForm
     template_name = "task_manager/users/update.html"
-    extra_context = {"title": "Обнавление"}
+    extra_context = {"title": "Обновление"}
     success_url = reverse_lazy("users:list_users")
-
-    def form_valid(self, form):
-        messages.success(
-            self.request, 
-            f"Пользователь успешно изменен"
-        )
-        return super().form_valid(form)
     
-    def form_invalid(self, form):
-        messages.error(
-            self.request, 
-            "Проверьте правильность заполнения формы"
-        )
-        return super().form_invalid(form)
+    def get_object(self, queryset=None):
+        return User.objects.get(pk=self.kwargs['pk'])
+    
+    def form_valid(self, form):
+        if self.request.user != self.get_object():
+            messages.error(self.request, "У вас нет прав для изменения")
+            return redirect('users:list_users')
+        
+        messages.success(self.request, "Пользователь успешно изменён")
+        return super().form_valid(form)
+
+    
+    
 
 
 class LoginUser(LoginView):
@@ -100,14 +101,13 @@ class DeleteUser(LoginRequiredMixin, DeleteView):
     template_name = "task_manager/users/delete.html"
     success_url = reverse_lazy("users:list_users")
     
-    def post(self, request, *args, **kwargs):
-        user = self.get_object()
-        author_task_count = Tasks.objects.filter(author=user).count()
+    def post(self, request, pk, *args, **kwargs):
+        user = User.objects.get(pk=pk)
 
-        if author_task_count > 0:
+        if self.request.user != user:
             messages.error(request,
-                f"Нельзя удалить пользователя {user.username}, если он связан с задачами.")
+                f"У вас нет прав для")
             return redirect('users:list_users')
-        
-        messages.success(request, "Пользователь удалён")
+        messages.success(request, "Пользователь успешно удалён")
         return super().post(request, *args, **kwargs)
+

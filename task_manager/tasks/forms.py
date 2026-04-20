@@ -69,8 +69,8 @@ class CreateTaskForm(forms.ModelForm):
     labels = forms.ModelMultipleChoiceField(
         queryset=Label.objects.all(),
         required=False,
-        widget=forms.SelectMultiple(attrs={'class': 'form-control', 'id': 'id_labels', 'size': '5'}),
-        label="Метка"
+        widget=forms.SelectMultiple(attrs={'class': 'form-select', 'id': 'id_labels', 'size': '5'}),
+        label="Метки"
     )
     
     class Meta:
@@ -91,15 +91,4 @@ class CreateTaskForm(forms.ModelForm):
         labels = {
             'task_name': 'Имя',
             'description': 'Описание',
-            'status': 'Статус',
-            'executor': 'Исполнитель',
-            'labels': 'Метки',
         }
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['status'].empty_label = "--------"
-        self.fields['status'].queryset = Statuses.objects.all()
-        self.fields['executor'].empty_label = "--------"
-        self.fields['executor'].queryset = get_user_model().objects.all()
-        self.fields['labels'].queryset = Label.objects.all()

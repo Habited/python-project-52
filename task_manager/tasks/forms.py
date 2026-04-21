@@ -8,8 +8,8 @@ User = get_user_model()
 
 class ExecutorChoiceField(forms.ModelChoiceField):
 
-    def label_from_instance(self, obj):
-        full_name = f"{obj.last_name} {obj.first_name}"
+    def label_from_instance(self, User):
+        full_name = f"{User.last_name} {User.first_name}"
         return full_name
 
 
@@ -27,7 +27,7 @@ class ListTasksForm(forms.Form):
             empty_label="---------"
         )
 
-    executor = forms.ModelChoiceField(
+    executor = ExecutorChoiceField(
             queryset=get_user_model().objects.all(),
             required=False,
             label='Исполнитель',

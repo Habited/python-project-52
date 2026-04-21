@@ -4,6 +4,14 @@ from task_manager.status.models import Statuses
 from task_manager.labels.models import Label
 from django.contrib.auth import get_user_model
 
+User = get_user_model()
+
+class ExecutorChoiceField(forms.ModelChoiceField):
+
+    def label_from_instance(self, obj):
+        full_name = f"{obj.last_name} {obj.first_name}"
+        return full_name
+
 
 class ListTasksForm(forms.Form):
 
@@ -60,11 +68,12 @@ class CreateTaskForm(forms.ModelForm):
         widget=forms.Select(attrs={'class': 'form-select', 'id': 'status-select'}),
         label="Статус"
     )
-    executor = forms.ModelChoiceField(
-        queryset=get_user_model().objects.all(),
+    executor = ExecutorChoiceField(
+        queryset=User.objects.all(),
         empty_label="--------",
         widget=forms.Select(attrs={'class': 'form-select', 'id': 'executor-select'}),
         label="Исполнитель"
+
     )
     labels = forms.ModelMultipleChoiceField(
         queryset=Label.objects.all(),
@@ -92,3 +101,6 @@ class CreateTaskForm(forms.ModelForm):
             'task_name': 'Имя',
             'description': 'Описание',
         }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)

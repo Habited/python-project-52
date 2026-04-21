@@ -86,14 +86,8 @@ class CreateTask(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.author = self.request.user
-        response = super().form_valid(form)
         messages.success(self.request, "Задача успешно создана")
-        return response
-    
-    def form_invalid(self, form):
-        response = super().form_valid(form)
-        messages.error(self.request, "Исправьте ошибки в форме")
-        return response
+        return super().form_valid(form)
     
 
 class ShowTask(LoginRequiredMixin, DetailView, ):

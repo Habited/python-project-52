@@ -35,8 +35,8 @@
                 <td>{{ task.pk }}</td>
                 <td><a href="{% url 'tasks:show_task' task.pk %}">{{ task.task_name }}</a></td>
                 <td>{{ task.status.status_name }}</td>
-                <td>{{ task.author.username }}</td>
-                <td>{{ task.executor.username }}</td>
+                <td>{{ task.author.last_name }} {{ task.author.first_name }}</td>
+                <td>{{ task.executor.last_name }} {{ task.executor.first_name }}</td>
                 <td>{{ task.time_create }}</td>
                 <td>
                     <a href="{% url 'tasks:update_task' task.pk %}">Изменить</a>

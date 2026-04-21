@@ -26,7 +26,7 @@ class Tasks(models.Model):
         on_delete=models.PROTECT,
         verbose_name="Автор",
         related_name="author_tasks",
-        null=False)
+        null=False,)
     executor = models.ForeignKey(
         User,
         on_delete=models.SET_NULL,
@@ -48,3 +48,4 @@ class Tasks(models.Model):
     
     def __str__(self):
         return self.task_name
+

@@ -28,7 +28,7 @@ class ListTasksForm(forms.Form):
         )
 
     executor = ExecutorChoiceField(
-            queryset=get_user_model().objects.all(),
+            queryset=get_user_model().objects.none(),
             required=False,
             label='Исполнитель',
             widget=forms.Select(
@@ -59,7 +59,17 @@ class ListTasksForm(forms.Form):
                     'id': 'only-my-tasks-checkbox',
                 }),
         )
-
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['executor'].queryset = (
+            User.objects.all()
+        )
+        self.fields['executor'].label_from_instance = (
+            lambda user: (
+                f"{user.first_name} {user.last_name}"
+                .strip() or user.username
+            )
+        )
 
 class CreateTaskForm(forms.ModelForm):
     status = forms.ModelChoiceField(

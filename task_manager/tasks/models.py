@@ -17,7 +17,7 @@ class Tasks(models.Model):
         default="Описание отсутствует")
     status = models.ForeignKey(
         Statuses,
-        on_delete=models.PROTECT,
+        on_delete=models.CASCADE,
         verbose_name="Статус",
         related_name="status_tasks",
         null=True)
@@ -32,6 +32,7 @@ class Tasks(models.Model):
         on_delete=models.SET_NULL,
         verbose_name="Исполнитель",
         related_name="executor_tasks",
+        blank=True,
         null=True)
     labels = models.ManyToManyField(
         Label,

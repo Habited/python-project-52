@@ -33,4 +33,4 @@ class LoginUser(views.LoginView):
 def logout_view(request):
     logout(request)
     messages.success(request, "Вы разлогинены")
-    return redirect("index.html")
+    return redirect("home")

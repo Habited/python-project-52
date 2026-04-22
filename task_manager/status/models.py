@@ -5,6 +5,9 @@ class Statuses(models.Model):
         max_length=150,
         verbose_name="Имя",
         unique=True)
+    time_create = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name="Дата создания")
 
     class Meta:
         verbose_name = "Статус"

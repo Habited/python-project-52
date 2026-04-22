@@ -66,15 +66,19 @@ class DeleteTask(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy("tasks:list_tasks")
     extra_context = {"title": "Удаление Задачи"}
     
-    def post(self, request, *args, **kwargs):
-        tasks = self.get_object()
+    def dispatch(self, request, *args, **kwargs):
+        self.object = self.get_object()
 
-        if tasks.author != self.request.user:
+        if self.object.author != self.request.user:
             messages.error(request, "Задачу может удалить только её автор")
             return redirect('tasks:list_tasks')
-
-        messages.success(request, "Задача успешно удалена")
-        return super().post(request, *args, **kwargs)
+        return super().dispatch(request, *args, **kwargs)
+    
+    def form_valid(self, form):
+        messages.success(
+            self.request, 'Задача успешно удалена'
+        )
+        return super().form_valid(form)
 
 
 class CreateTask(LoginRequiredMixin, CreateView):

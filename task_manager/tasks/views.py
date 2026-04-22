@@ -85,8 +85,10 @@ class CreateTask(LoginRequiredMixin, CreateView):
     extra_context = {"title": "Создать задачу"}
 
     def form_valid(self, form):
-        messages.success(self.request, "Задача успешно создана")
         form.instance.author = self.request.user
+        messages.success(
+            self.request, 'Задача успешно создана'
+        )
         return super().form_valid(form)
     
 

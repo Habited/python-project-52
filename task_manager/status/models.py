@@ -1,8 +1,10 @@
 from django.db import models
 
 class Statuses(models.Model):
-    status_name = models.CharField(max_length=255, verbose_name="Имя", unique=True)
-    time_create = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
+    status_name = models.CharField(
+        max_length=150,
+        verbose_name="Имя",
+        unique=True)
 
     class Meta:
         verbose_name = "Статус"

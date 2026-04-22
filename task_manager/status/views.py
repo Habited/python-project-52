@@ -59,10 +59,7 @@ class CreateStatus(LoginRequiredMixin, CreateView):
     extra_context = {"title": "Создать статус"}
 
     def form_valid(self, form):
-        response = super().form_valid(form)
-        
-        messages.success(
-            self.request, 
-            "Статус успешно создан"
+        messages.success(self.request, 
+                         "Статус успешно создан"
         )
-        return response
+        return super().form_valid(form)

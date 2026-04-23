@@ -8,7 +8,6 @@ User = get_user_model()
 
 class TestTasksCRUD(TestCase):
 
-
     def setUp(self):
         self.tasks = []
         for i in range(5):

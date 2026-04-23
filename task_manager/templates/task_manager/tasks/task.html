@@ -14,14 +14,14 @@
             <h4 class="mb-0">{{ task.task_name }}</h4>
         </div>
         <div class="card-header bg-success  text-white">
-            <h5 class="mb-0">{{ task.description|default:"—" }}</h5>
+            <h5 class="mb-0">{{ task.description }}</h5>
         </div>
         <div class="card-body">
             <table class="table table-borderless mb-0">
                 <tbody>
                     <tr>
                         <th scope="row" class="w-25">Описание:</th>
-                        <td>{{ task.description|default:"—" }}</td>
+                        <td>{{ task.description }}</td>
                     </tr>
                     <tr>
                         <th scope="row">Автор:</th>

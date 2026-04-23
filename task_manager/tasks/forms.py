@@ -102,11 +102,6 @@ class CreateTaskForm(forms.ModelForm):
                 'class': 'form-control',
                 'id': 'task_name-input',
             }),
-            'description': forms.Textarea(attrs={
-                'class': 'form-control',
-                'rows': 5,
-                'maxlength': 5000
-            }),
         }
         labels = {
             'task_name': 'Имя',

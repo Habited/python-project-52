@@ -12,9 +12,8 @@ class Tasks(models.Model):
         verbose_name="Имя",
         unique=True)
     description = models.TextField(
-        max_length=5000,
         verbose_name="Описание",
-        default="Описание отсутствует")
+        )
     status = models.ForeignKey(
         Statuses,
         on_delete=models.CASCADE,

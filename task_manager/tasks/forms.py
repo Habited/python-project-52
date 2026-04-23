@@ -65,9 +65,8 @@ class ListTasksForm(forms.Form):
             User.objects.all()
         )
         self.fields['executor'].label_from_instance = (
-            lambda user: (
-                f"{user.first_name} {user.last_name}"
-                .strip() or user.username
+            lambda user: (user.get_full_name().strip()
+                          or user.username
             )
         )
 
@@ -82,7 +81,8 @@ class CreateTaskForm(forms.ModelForm):
         queryset=User.objects.all(),
         empty_label="--------",
         widget=forms.Select(attrs={'class': 'form-select', 'id': 'executor-select'}),
-        label="Исполнитель"
+        label="Исполнитель",
+        required=False
 
     )
     labels = forms.ModelMultipleChoiceField(

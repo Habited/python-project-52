@@ -6,6 +6,7 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
+
 class ExecutorChoiceField(forms.ModelChoiceField):
 
     def label_from_instance(self, User):
@@ -59,6 +60,7 @@ class ListTasksForm(forms.Form):
                     'id': 'only-my-tasks-checkbox',
                 }),
         )
+    
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['executor'].queryset = (
@@ -71,17 +73,22 @@ class ListTasksForm(forms.Form):
             )
         )
 
+
 class CreateTaskForm(forms.ModelForm):
     status = forms.ModelChoiceField(
         queryset=Statuses.objects.all(),
         empty_label="--------",
-        widget=forms.Select(attrs={'class': 'form-select', 'id': 'status-select'}),
+        widget=forms.Select(
+            attrs={'class': 'form-select',
+                   'id': 'status-select'}),
         label="Статус"
     )
     executor = ExecutorChoiceField(
         queryset=User.objects.all(),
         empty_label="--------",
-        widget=forms.Select(attrs={'class': 'form-select', 'id': 'executor-select'}),
+        widget=forms.Select(
+            attrs={'class': 'form-select',
+                   'id': 'executor-select'}),
         label="Исполнитель",
         required=False
 
@@ -89,7 +96,9 @@ class CreateTaskForm(forms.ModelForm):
     labels = forms.ModelMultipleChoiceField(
         queryset=Label.objects.all(),
         required=False,
-        widget=forms.SelectMultiple(attrs={'class': 'form-select', 'id': 'id_labels', 'size': '5'}),
+        widget=forms.SelectMultiple(
+            attrs={'class': 'form-select', 'id':
+                   'id_labels', 'size': '5'}),
         label="Метки"
     )
     

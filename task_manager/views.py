@@ -22,14 +22,13 @@ class LoginUser(views.LoginView):
         messages.success(self.request, "Вы залогинены")
         return reverse_lazy("home")
     
-    
     def form_invalid(self, form):
         messages.error(self.request, 
             "Неверный логин или пароль"
         )
         return super().form_invalid(form)
     
-
+    
 def logout_view(request):
     logout(request)
     messages.success(request, "Вы разлогинены")

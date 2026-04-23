@@ -1,13 +1,18 @@
 from django import forms
-from django.contrib.auth import get_user_model, password_validation
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth import get_user_model
+from django.contrib.auth.forms import (AuthenticationForm,
+                                       UserCreationForm)
 
 
 class RegisterUserForm(UserCreationForm):
 
     class Meta:
         model = get_user_model()
-        fields = ["first_name", "last_name", "username", "password1", "password2"]
+        fields = ["first_name",
+                  "last_name",
+                  "username",
+                  "password1",
+                  "password2"]
         
         widgets = {
             "first_name": forms.TextInput(attrs={
@@ -46,7 +51,8 @@ class RegisterUserForm(UserCreationForm):
         }
         
         help_texts = {
-            "username": "Обязательное поле. Не более 150 символов. Только буквы, цифры и @/./+/-/_.",
+            "username": """Обязательное поле. Не более 150 символов. 
+            Только буквы, цифры и @/./+/-/_.""",
         }
     
     def save(self, commit=True):
@@ -88,7 +94,11 @@ class UpdateUserForm(UserCreationForm):
 
     class Meta:
         model = get_user_model()
-        fields = ["first_name", "last_name", "username", "password1", "password2"]
+        fields = ["first_name",
+                  "last_name",
+                  "username",
+                  "password1",
+                  "password2"]
         
         widgets = {
             "first_name": forms.TextInput(attrs={
@@ -127,7 +137,8 @@ class UpdateUserForm(UserCreationForm):
         }
         
         help_texts = {
-        "username": "Обязательное поле. Не более 150 символов. Только буквы, цифры и @/./+/-/_.",
+        "username": """Обязательное поле. Не более 150 символов. 
+        Только буквы, цифры и @/./+/-/_.""",
         }
     
     def save(self, commit=True):

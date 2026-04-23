@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.urls import reverse
 from task_manager.labels.models import Label
 
+
 class TestLabelCRUD(TestCase):
 
     def setUp(self):
@@ -11,7 +12,7 @@ class TestLabelCRUD(TestCase):
         self.count_labels = len(self.labels)
 
     def test_create_label(self):
-        label = Label.objects.create(label_name=f"Срочно")
+        label = Label.objects.create(label_name="Срочно")
         self.assertTrue(label)
         responce = self.client.get(reverse('labels:list_labels'))
         self.assertEqual(responce.status_code, 302)

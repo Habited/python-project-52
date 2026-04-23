@@ -5,18 +5,25 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
+
 class TestTasksCRUD(TestCase):
+
 
     def setUp(self):
         self.tasks = []
         for i in range(5):
-            self.tasks.append(Tasks.objects.create(task_name=f"Задача №{i}",
-                                                   author=User.objects.create(username=f"user{i}", password=f"pass{i}")))
+            self.tasks.append(
+                Tasks.objects.create(
+                    task_name=f"Задача №{i}",
+                    author=User.objects.create(username=f"user{i}",
+                                               password=f"pass{i}")))
         self.count_tasks = len(self.tasks)
 
     def test_create_task(self):
-        task = Tasks.objects.create(task_name=f"Постирать белье",
-                                    author=User.objects.create(username="user", password="pass"))
+        task = Tasks.objects.create(
+            task_name="Постирать белье",
+            author=User.objects.create(
+                username="user", password="pass"))
         self.assertTrue(self.tasks)
         responce = self.client.get(reverse('tasks:list_tasks'))
         self.assertEqual(responce.status_code, 200)

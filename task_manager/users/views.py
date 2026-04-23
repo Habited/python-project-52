@@ -2,12 +2,8 @@ from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from django.contrib import messages
-from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
-from task_manager.tasks.models import Tasks
-from django.db.models import ProtectedError
-from django.views.generic.edit import FormView
 from task_manager.users.forms import RegisterUserForm, UpdateUserForm
 
 

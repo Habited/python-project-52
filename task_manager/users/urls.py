@@ -1,10 +1,9 @@
-from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
 from task_manager.users import views
 
 app_name = "users"
 
-urlpatterns = [ 
+urlpatterns = [
     path('create/', views.RegisterUser.as_view(), name='register_user'),
     path('', views.UsersList.as_view(), name='list_users'),
     path('<int:pk>/update/', views.UpdateUser.as_view(), name='update_user'),

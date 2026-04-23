@@ -5,7 +5,6 @@ from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from .models import Statuses
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
-from task_manager.tasks.models import Tasks
 
 
 class StatusesList(LoginRequiredMixin, ListView):
@@ -25,7 +24,7 @@ class UpdateStatus(LoginRequiredMixin, UpdateView):
     def form_valid(self, form):
         messages.success(
             self.request, 
-            f"Статус успешно изменен"
+            "Статус успешно изменен"
         )
         return super().form_valid(form)
 

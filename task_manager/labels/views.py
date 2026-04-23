@@ -24,7 +24,7 @@ class UpdateLabel(LoginRequiredMixin, UpdateView):
     def form_valid(self, form):
         messages.success(
             self.request, 
-            f"Метка успешно изменена"
+            "Метка успешно изменена"
         )
         return super().form_valid(form)
 

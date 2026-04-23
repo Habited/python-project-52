@@ -1,12 +1,14 @@
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from .forms import CreateTaskForm, ListTasksForm
-from django.views.generic import CreateView, ListView, UpdateView, DeleteView, DetailView
+from django.views.generic import (CreateView,
+                                  ListView,
+                                  UpdateView,
+                                  DeleteView,
+                                  DetailView)
 from .models import Tasks
 from django.contrib import messages
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.contrib.auth import get_user_model
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class TasksList(ListView, LoginRequiredMixin):
@@ -44,6 +46,7 @@ class TasksList(ListView, LoginRequiredMixin):
                 queryset = queryset.filter(author=self.request.user)
 
         return queryset
+
 
 class UpdateTask(LoginRequiredMixin, UpdateView):
     model = Tasks

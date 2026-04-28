@@ -14,7 +14,7 @@ run-migration:
 	uv run manage.py migrate
 
 test:
-	uv run coverage run manage.py test
+	uv run pytest
 
 test-coverage:
-	uv run coverage run manage.py test --cov=task_manager --cov-report=xml:coverage.x
+	uv run pytest --cov=task_manager --cov-report=xml:coverage.x

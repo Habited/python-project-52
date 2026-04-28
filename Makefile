@@ -17,4 +17,4 @@ test:
 	uv run coverage run manage.py test
 
 test-coverage:
-	uv run pytest --cov=task_manager --cov-report=xml --cov-report=html
+	coverage run manage.py test && coverage report -m

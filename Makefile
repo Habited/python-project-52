@@ -12,3 +12,9 @@ run-shell:
 
 run-migration:
 	uv run manage.py migrate
+
+test:
+	uv run pytest
+
+test-coverage:
+	uv run pytest --cov=task_manager --cov-report=xml:coverage.x

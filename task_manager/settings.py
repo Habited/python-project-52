@@ -18,24 +18,18 @@ if not os.getenv('RENDER'):
     from dotenv import load_dotenv
     load_dotenv()
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY')
-#SECRET_KEY = 'django-insecure-)=mwikkqdxr9h^^hb_vnybc6)8km_!22ldte69v8-b@k+yx2-q'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True #os.getenv('DEBUG', 'True').lower() == 'true'
+
+DEBUG = True
 
 ALLOWED_HOSTS = ['python-project-52-2ckb.onrender.com', '127.0.0.1', '.onrender.com', 'localhost', 'webserver', '192.168.1.135']
 
 
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -84,8 +78,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'task_manager.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
 DATABASES = {
     'default': dj_database_url.config(

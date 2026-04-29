@@ -18,3 +18,4 @@ test:
 
 test-coverage:
 	coverage run manage.py test && coverage report -m
+	coverage xml

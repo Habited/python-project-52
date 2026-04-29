@@ -21,4 +21,17 @@ render-start:
 	gunicorn task_manager.wsgi
 
 test-coverage:
-	uv run manage.py test --cov=task_manager --cov-report xml
+	uv run coverage run pytest
+	uv run coverage report --show-missing --skip-covered
+
+ci-install:
+	uv sync --group dev
+
+ci-migrate:
+	uv run python manage.py makemigrations --noinput && \
+	uv run python manage.py migrate --noinput
+
+ci-test:
+	uv run coverage run pytest
+	uv run coverage xml
+	uv run coverage report --show-missing --skip-covered

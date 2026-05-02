@@ -30,13 +30,13 @@ jobs:
           echo "$HOME/.local/bin" >> $GITHUB_PATH
 
       - name: Install dependencies
-        run: make install
+        run: make ci-install
 
       - name: Run migrations
-        run: make migrate
+        run: make ci-migrate
 
       - name: Run tests with coverage
-        run: make test
+        run: make ci-test
 
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v7

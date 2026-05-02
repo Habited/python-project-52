@@ -25,7 +25,7 @@ test-coverage:
 	uv run coverage report --show-missing --skip-covered
 
 ci-install:
-	uv sync --group dev
+	uv sync
 
 ci-migrate:
 	uv run python manage.py makemigrations --noinput && \

@@ -20,10 +20,6 @@ build:
 render-start:
 	gunicorn task_manager.wsgi
 
-test-coverage:
-	uv run coverage run pytest
-	uv run coverage report --show-missing --skip-covered
-
 ci-install:
 	uv sync
 

@@ -1,5 +1,5 @@
 install:
-	uv sync --dev
+	uv sync
 
 dev-start:
 	uv run python manage.py runserver

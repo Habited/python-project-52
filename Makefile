@@ -12,7 +12,7 @@ collectstatic:
 
 
 test:
-	uv run pytest
+	uv run manage.py test
 
 build:
 	./build.sh

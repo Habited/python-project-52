@@ -1,5 +1,4 @@
 .venv
-.github
 .python-version
 .env
 task_manager/__pycache__
@@ -13,3 +12,5 @@ task_manager/status/migrations/__pycache__
 task_manager/tasks/migrations/__pycache__
 task_manager/labels/migrations/__pycache__
 db.sqlite3
+coverage.xml
+.coverage

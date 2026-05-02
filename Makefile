@@ -28,6 +28,6 @@ ci-migrate:
 	uv run python manage.py migrate --noinput
 
 ci-test:
-	uv run coverage run pytest
+	uv run coverage run manage.py test
 	uv run coverage xml
 	uv run coverage report --show-missing --skip-covered

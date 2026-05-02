@@ -17,6 +17,7 @@ class StatusesList(LoginRequiredMixin, ListView):
 class UpdateStatus(LoginRequiredMixin, UpdateView):
     model = Statuses
     fields = ['status_name']
+    fields = ["name"]
     template_name = "task_manager/status/update.html"
     extra_context = {"title": "Обнавление"}
     success_url = reverse_lazy("statuses:list_statuses")
